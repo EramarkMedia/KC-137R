@@ -463,6 +463,16 @@ no. D6-3071-00
 		<iff>
 	        <file>Aircraft/KC-137R/Nasal/iff.nas</file>
 	    </iff>
+	    
+	    <!-- Roughbook -->
+	    <roughbook>
+	        <file>Models/Cockpit/Equipment/roughbook/Nasal/roughbook.nas</file>
+	    </roughbook>
+	    
+	    <!-- 12v Power Outlet -->
+	    <roughbook>
+	        <file>Models/Cockpit/Equipment/12v_outlet/Cpt/Nasal/power_outlet.nas</file>
+	    </roughbook>
 	</nasal>
 
     <dual-control>
