@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<!--Roughbook model-->
+<path>Roughbook.ac</path>
+
+ <!--Pick animation screen tilt-->
+ <animation>
+  <type>pick</type>
+   <object-name>Monitor_Frame</object-name>
+   <action>
+    <button>3</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+    <command>property-adjust</command>
+    <property>b707/equipment/roughbook/screen_angle</property>
+    <step>2</step>
+    <min>0</min>
+    <max>90</max>
+    <wrap>false</wrap>
+    </binding>
+   </action>
+   <action>
+    <button>4</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+    <command>property-adjust</command>
+    <property>b707/equipment/roughbook/screen_angle</property>
+    <step>-2</step>
+    <min>0</min>
+    <max>90</max>
+    <wrap>false</wrap>
+    </binding>
+   </action>
+ </animation>
+
+
+
+<!--Screen tilt rotation-->
+<animation>
+  <object-name>Monitor_Frame</object-name>
+  <type>rotate</type>
+  <property>b707/equipment/roughbook/screen_angle</property>
+  <factor>2</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>-0.067714</x-m>
+   <y-m>0.000061</y-m>
+   <z-m>0.027923</z-m>
+  </center>
+  <axis>
+   <x>0</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+ </animation>
+ 
+  
+ 
+ </PropertyList>
