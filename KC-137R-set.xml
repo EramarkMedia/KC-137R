@@ -463,7 +463,7 @@ no. D6-3071-00
         </datalink>
 		<iff>
 	        <file>Aircraft/KC-137R/Nasal/iff.nas</file>
-	    </iff>
+	    </iff>    
 	</nasal>
 
     <dual-control>
