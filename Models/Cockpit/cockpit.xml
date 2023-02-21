@@ -612,7 +612,28 @@
 			<property>sim/yokes-visible</property>
 		</condition>
 	</animation>	
-
+	
+	<!-- 12v Power Outlet, Captain Side -->
+	<model>
+		<name>Junction-Box</name>
+		<path>Models/Cockpit/Equipment/12v_outlet/Cpt/Xml/Junction_Box.xml</path>
+		<offsets>
+		  <x-m>-18.7117</x-m>
+		  <y-m>-0.710326</y-m>
+		  <z-m>0.88008</z-m>
+		  <pitch-deg>12.0763</pitch-deg>   
+		  <heading-deg>-15.0</heading-deg>
+		  <roll-deg>-38.5245</roll-deg>
+		</offsets>
+	</model>
+	
+	<!--  Roughbook docker station, including laptop -->
+	<model>
+		<name>Roughbook-Docker</name>
+		<path>Models/Cockpit/Equipment/roughbook/Docker/Roughbook_Docker.xml</path>
+	</model> 
+	
+	
 	<model>
 		<name>pilots</name>
 		<path>Aircraft/KC-137R/Models/Cockpit/Pilots/pilots.xml</path>
