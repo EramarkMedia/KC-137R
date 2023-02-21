@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<!--Junction-Box".-->
+<model> 
+<name>junction_box</name>
+<path>Models/Cockpit/Equipment/12v_outlet/Cpt/Models/Junction_Box.ac</path>
+</model>
+ 	
+<!--Outlet Hatch Center".-->
+<model> 
+<name>outlet_hatch_center</name>
+ <path>Models/Cockpit/Equipment/12v_outlet/Cpt/Models/Outlet_Hatch.ac</path>
+ <offsets> 
+  <x-m>0</x-m>
+  <y-m>0</y-m>
+  <z-m>0</z-m>
+ </offsets>
+</model>
+
+
+<animation>
+  <object-name>outlet_hatch_center</object-name>
+  <type>rotate</type>
+  <property>b707/equipment/power_outlet/outlet_hatch_center_rotation</property>
+  <factor>2</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>0.000021</x-m>
+   <y-m>-0.013335</y-m>
+   <z-m>0.038025</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation> 
+
+
+<!--Outlet Hatch Left".-->
+<model> 
+<name>outlet_hatch_left</name>
+ <path>Models/Cockpit/Equipment/12v_outlet/Cpt/Models/Outlet_Hatch.ac</path>
+ <offsets> 
+  <x-m>0.03m</x-m>
+  <y-m>0</y-m>
+  <z-m>0</z-m>
+ </offsets>
+</model>
+
+
+<animation>
+  <object-name>outlet_hatch_left</object-name>
+  <type>rotate</type>
+  <property>b707/equipment/power_outlet/outlet_hatch_left_rotation</property>
+  <factor>2</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>0.030184</x-m>
+   <y-m>-0.013335</y-m>
+   <z-m>0.038025</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation> 
+
+
+
+<!--Outlet Hatch Right".-->
+<model> 
+<name>outlet_hatch_right</name>
+ <path>Models/Cockpit/Equipment/12v_outlet/Cpt/Models/Outlet_Hatch.ac</path>
+ <offsets> 
+  <x-m>-0.03m</x-m>
+  <y-m>0</y-m>
+  <z-m>0</z-m>
+ </offsets>
+</model>
+
+
+<animation>
+  <object-name>outlet_hatch_right</object-name>
+  <type>rotate</type>
+  <property>b707/equipment/power_outlet/outlet_hatch_right_rotation</property>
+  <factor>2</factor>
+  <offset-deg>0</offset-deg>
+  <center>
+   <x-m>-0.02998</x-m>
+   <y-m>-0.013335</y-m>
+   <z-m>0.038027</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation> 
+ 	
+
+<animation>
+  <type>pick</type>
+   <object-name>outlet_hatch_center</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+  <command>property-cycle</command>
+  <property>b707/equipment/power_outlet/outlet_hatch_center_rotation</property>
+  <value>-107</value>
+  <value>0</value>
+</binding>
+</action>
+ </animation>
+ 
+ 
+<animation>
+  <type>pick</type>
+   <object-name>outlet_hatch_left</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+    <condition>
+      <not>
+        <property>b707/equipment/roughbook/charger_connected</property>
+      </not>
+    </condition>
+  <command>property-cycle</command>
+  <property>b707/equipment/power_outlet/outlet_hatch_left_rotation</property>
+  <value>-89</value>
+  <value>0</value>
+</binding>
+</action>
+ </animation>
+ 
+<binding>
+    <condition>
+      <not>
+        <property>b707/equipment/roughbook/charger_connected</property>
+      </not>
+    </condition>
+    <command>
+      <property-toggle>
+        <property>b707/equipment/power_outlet/outlet_hatch_left_rotation</property>
+      </property-toggle>
+    </command>
+  </binding>
+ 
+<animation>
+  <type>pick</type>
+   <object-name>outlet_hatch_right</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>true</repeatable>
+    <interval-sec>0.2</interval-sec>
+    <binding>
+  <command>property-cycle</command>
+  <property>b707/equipment/power_outlet/outlet_hatch_right_rotation</property>
+  <value>-100</value>
+  <value>0</value>
+</binding>
+</action>
+ </animation>
+ 
+ 
+<!-- Emissions -->
+
+<animation>
+		<type>material</type>
+		<object-name>junction_box</object-name>
+		<object-name>outlet_hatch_center</object-name>
+		<object-name>outlet_hatch_left</object-name>
+		<object-name>outlet_hatch_right</object-name>
+		<condition>
+			<not><property>sim/rendering/rembrandt/enabled</property></not>
+		</condition>
+		<emission>
+		  <red>0.15</red>
+		  <green>0.15</green>
+		  <blue>0.15</blue>
+		  <factor-prop>sim/multiplay/generic/float[0]</factor-prop>
+		</emission>
+	</animation>
+ 	
+ </PropertyList>
