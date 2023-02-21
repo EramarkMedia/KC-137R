@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<!--"Docker Station".-->
+<model> 
+<name>docker_station</name>
+<path>Roughbook_Docker.ac</path>
+</model>
+ 	
+<!--"Charge cable un-plugged".-->
+<model> 
+<name>cable_out</name>
+ <path>Models/Cockpit/Equipment/roughbook/Docker/Cable_Out.ac</path>
+ <offsets> 
+  <x-m>0</x-m>
+  <y-m>-0.006</y-m>
+  <z-m>0</z-m>
+ </offsets>
+</model>
+
+<!--"Charge cable plugged in".-->
+<model> 
+<name>cable_in</name>
+ <path>Models/Cockpit/Equipment/roughbook/Docker/Cable_In.ac</path>
+ <offsets> 
+  <x-m>0</x-m>
+  <y-m>-0.006</y-m>
+  <z-m>0</z-m>
+ </offsets>
+</model>
+
+<!--"Roughbook / Laptop".-->
+<model> 
+<name>roughbook</name>
+ <path>Models/Cockpit/Equipment/roughbook/Roughbook.xml</path>
+ <offsets> 
+  <x-m>-18.5152</x-m>
+  <y-m>-0.7598</y-m>
+  <z-m>0.837483</z-m>
+  <pitch-deg>71</pitch-deg>   
+  <heading-deg>70</heading-deg>
+  <roll-deg>7.5</roll-deg>
+ </offsets>
+</model>
+    
+   
+<!-- Show plugged in model, if we are connected. -->
+<animation>
+<type>select</type>
+<object-name>cable_in</object-name>
+<condition>
+<greater-than>
+<property>b707/equipment/roughbook/charger_connected</property>
+<value>0</value>
+</greater-than>
+</condition>
+</animation>	
+
+<!-- Show un-plugged model, if we are disconnected. -->
+<animation>
+<type>select</type>
+<object-name>cable_out</object-name>
+<condition>
+<less-than>
+<property>b707/equipment/roughbook/charger_connected</property>
+<value>1</value>
+</less-than>
+</condition>
+</animation>	
+
+
+<!--Pick animation un-plugged-->
+<animation>
+  <type>pick</type>
+   <object-name>Plug.002</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.0</interval-sec>
+    <binding>
+    <condition>
+    <less-than>
+    <property>b707/equipment/power_outlet/outlet_hatch_left_rotation</property>
+    <value>0</value>
+    </less-than>
+   </condition>
+  <command>property-assign</command>
+  <property>b707/equipment/roughbook/charger_connected</property>
+  <value>1</value>
+</binding>
+</action>
+ </animation>
+ 
+ <!--Pick animation plugged-in-->
+<animation>
+  <type>pick</type>
+   <object-name>Plug</object-name>
+   <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <interval-sec>0.0</interval-sec>
+    <binding>
+  <command>property-assign</command>
+  <property>b707/equipment/roughbook/charger_connected</property>
+  <value>0</value>
+</binding>
+</action>
+ </animation>
+ 
+ 
+<!-- Emissions -->
+
+<animation>
+		<type>material</type>
+		<object-name>roughbook</object-name>
+		<object-name>docker_station</object-name>
+		<object-name>cable_in</object-name>
+		<object-name>cable_out</object-name>
+		<condition>
+			<not><property>sim/rendering/rembrandt/enabled</property></not>
+		</condition>
+		<emission>
+		  <red>0.15</red>
+		  <green>0.15</green>
+		  <blue>0.15</blue>
+		  <factor-prop>sim/multiplay/generic/float[0]</factor-prop>
+		</emission>
+	</animation>
+ 
+</PropertyList>
